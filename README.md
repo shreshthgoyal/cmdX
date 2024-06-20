@@ -3,8 +3,10 @@
 An AI tool that converts natural language instructions into shell commands for the command line interface (CLI).
 
 
-This is a CLI tool to provide commands based on the task in the cli itself. This is works on RAG with a custom knowledge base.
+https://github.com/shreshthgoyal/cmdX/assets/73751013/c7738fa6-d6fc-46ae-a3d1-5eadb4f7cf88
 
+
+This is a CLI tool to provide commands based on the task in the cli itself. This is works on RAG with a custom knowledge base.
 
 ## Install and Run
 ```
