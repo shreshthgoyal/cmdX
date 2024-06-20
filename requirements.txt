@@ -7,7 +7,5 @@ langchainhub
 uvicorn
 faiss-cpu
 langchain-cohere
-langchain-nomic
-langchain-google-genai
 langchain-fireworks
 prompt_toolkit

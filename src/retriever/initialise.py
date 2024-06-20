@@ -3,8 +3,6 @@ from src.retriever.config import ANSWERS_CSV_PATH, EMBEDDINGS_MODEL
 from langchain_core.documents.base import Document
 from langchain_community.document_loaders import PyPDFLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-# from langchain_nomic.embeddings import NomicEmbeddings
-# from langchain_google_genai import GoogleGenerativeAIEmbeddings
 from langchain_cohere import CohereEmbeddings
 
 
