@@ -9,3 +9,4 @@ venv.bak/
 **/__pycache__/
 app.log
 chroma_data/
+.DS_Store
