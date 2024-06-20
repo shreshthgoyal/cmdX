@@ -8,4 +8,4 @@ def apiMessage(query_type: str, response: str) -> str:
     if query_type in response_map:
         return response_map[query_type]
     else:
-        raise "I can't help you right now"
+        raise ValueError("I can't help you right now")

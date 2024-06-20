@@ -9,6 +9,7 @@ class GetGreet:
 
     def get_greet(self, query:str):
         try:
+            logging.info(f"Received query: {query}")
             return f"Hey! I'm here to make things easier for you. How can I be of service?"
         
         except Exception as e:

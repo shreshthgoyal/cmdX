@@ -19,6 +19,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# Initialize retriever and agent executor
 retriever_instance = CreateRetriever(vector_db)
 retriever = retriever_instance.get_retriever()
 agent_executor = LC_AgentExecutor(retriever).get_executor()
@@ -44,7 +45,7 @@ async def get_status():
 async def query_cult_agent(query: QueryInput) -> QueryOutput:
     try:
         query_response = await invoke_agent_with_retry(query.input)
-        query_type = query_response['intermediate_steps'][0][0].__dict__['tool']        
+        query_type = query_response['intermediate_steps'][0][0].__dict__['tool']
         query_response["message"] = apiMessage(query_type, query_response['output'])
         query_response["tool"] = query_type
 

@@ -47,9 +47,9 @@ class LC_AgentExecutor:
             
             self.custom_agent = self.create_agent()
             self.agent_executor = self.create_executor()
-            logging.info("CustomAgentExecutor initialized successfully")
+            logging.info("LC_AgentExecutor initialized successfully")
         except Exception as e:
-            logging.error(f"Error initializing CustomAgentExecutor: {e}")
+            logging.error(f"Error initializing LC_AgentExecutor: {e}")
             raise
 
     def create_agent(self):
@@ -75,15 +75,15 @@ class LC_AgentExecutor:
                 handle_parsing_errors=True,
             )
             
-            logging.info("LC_AgentExecutor created successfully")
+            logging.info("AgentExecutor created successfully")
             return executor
         except Exception as e:
-            logging.error(f"Error creating LC_AgentExecutor: {e}")
+            logging.error(f"Error creating AgentExecutor: {e}")
             raise
 
     def get_executor(self):
         try:
             return self.agent_executor
         except Exception as e:
-            logging.error(f"Error getting LC_AgentExecutor: {e}")
+            logging.error(f"Error getting AgentExecutor: {e}")
             raise

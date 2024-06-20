@@ -12,7 +12,6 @@ from langchain_core.output_parsers import StrOutputParser
 from langchain.schema.runnable import RunnablePassthrough
 from src.chains.config import CHAT_MODEL_NAME, TEMPLATE_STR
 from langchain_fireworks import Fireworks
-# from langchain_cohere import ChatCohere
 
 setup_logging()
 dotenv.load_dotenv()
@@ -20,12 +19,11 @@ dotenv.load_dotenv()
 class FAQChain:
     def __init__(self, retriever):
         try:
-            # self.chat_model = ChatGroq(groq_api_key=os.getenv('GROQ_API_KEY'), model_name=CHAT_MODEL_NAME)
             self.chat_model = Fireworks(
                 model=CHAT_MODEL_NAME,
                 max_tokens=256
             )
-            # self.chat_model = Ollama(model="mistral")
+            
             self.system_prompt = SystemMessagePromptTemplate(
                 prompt=PromptTemplate(
                     input_variables=["context"],
@@ -54,13 +52,14 @@ class FAQChain:
             logging.error(f"Error initializing FAQChain: {e}")
             raise
 
-
     def create_faq_chain(self, retriever):
         try:
-            faq_chain = {
-                "context": retriever,
-                "question": RunnablePassthrough()
-            } | self.prompt_template | self.chat_model | StrOutputParser()
+            faq_chain = (
+                {"context": retriever, "question": RunnablePassthrough()}
+                | self.prompt_template
+                | self.chat_model
+                | StrOutputParser()
+            )
             return faq_chain
         except Exception as e:
             logging.error(f"Error creating FAQ chain: {e}")
@@ -73,6 +72,10 @@ class FAQChain:
             logging.error(f"Error retrieving FAQ chain: {e}")
             raise
 
-    def invoke_chain(self, query:str): 
-        response = self.faq_chain.invoke({"input": query})
-        return response
+    def invoke_chain(self, query: str): 
+        try:
+            response = self.faq_chain.invoke({"input": query})
+            return response
+        except Exception as e:
+            logging.error(f"Error invoking FAQ chain with query '{query}': {e}")
+            return "There was an error processing your request. Please try again later."

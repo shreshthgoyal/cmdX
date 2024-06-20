@@ -10,7 +10,6 @@ import requests
 async def call_api(query: str):
     if query:
         url = "http://0.0.0.0:8000/query-agent"
-        response = None
         with ProgressBar() as pb:
             for i in pb(range(100), label="Fetching response..."):
                 if i < 90:
@@ -59,7 +58,7 @@ def execute_command(command):
         ).run()
 
 def choose_action():
-    result = radiolist_dialog(
+    return radiolist_dialog(
         title="Choose Action",
         text="What would you like to do?",
         values=[
@@ -68,7 +67,6 @@ def choose_action():
             ("quit", "Quit")
         ],
     ).run()
-    return result
 
 def main():
     if len(sys.argv) > 1:
