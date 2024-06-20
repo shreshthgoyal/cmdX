@@ -1,0 +1,13 @@
+fastapi
+python-dotenv
+langchain
+langchain-core
+langchain-community
+langchainhub
+uvicorn
+faiss-cpu
+langchain-cohere
+langchain-nomic
+langchain-google-genai
+langchain-fireworks
+prompt_toolkit
